@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "os": "#ACB0BE",
+    "closer": "p:os",
+    "pink": "#F5C2E7",
+    "lavender": "#B4BEFE",
+    "blue":  "#89B4FA",
+    "sky": "#89dceb",
+    "green": "#a6e3a1",
+    "red": "#f38ba8",
+    "yellow": "#f9e2af",
+    "purple": "#cba6f7",
+    "mantle": "#181825",
+    "peach": "#fab387",
+    "rose": "#f5e0dc",
+    "teal": "#94e2d5"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "plain",
+          "foreground": "p:closer",
+          "template": "\u256d\u2574",
+          "type": "text"
+        },
+        {
+          "foreground": "p:pink",
+          "properties": {
+            "folder_icon": "\ue5fe",
+            "home_icon": "~",
+            "folder_separator_icon": "/",
+            "style": "full",
+            "mixed_threshold": 10
+          },
+          "style": "plain",
+          "template": "{{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "p:lavender",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:red{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
+            "{{ if gt .Ahead 0 }}p:yellow{{ end }}",
+            "{{ if gt .Behind 0 }}p:red{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "cherry_pick_icon": "\ue29b ",
+            "commit_icon": "\uf417 ",
+            "fetch_status": true,
+            "fetch_upstream_icon": false,
+            "merge_icon": "\ue727 ",
+            "no_commits_icon": "\uf0c3 ",
+            "rebase_icon": "\ue728 ",
+            "revert_icon": "\uf0e2 ",
+            "tag_icon": "\uf412 "
+          },
+          "template": "{{ .HEAD }}{{ if .Working.Changed }} \uf0c7 {{ .Working.Modified }}{{ end }} ",
+          "style": "plain",
+          "type": "git"
+        },
+        {
+          "type": "executiontime",
+          "foreground": "p:rose",
+          "foreground_templates": [
+            "{{ if gt (.Ms) 5000 }}p:peach{{ end }}"
+          ],
+          "style": "plain",
+          "template": " \uf250 {{ .FormattedMs }} ",
+          "properties": {
+            "threshold": 0,
+            "style": "round",
+            "always_enabled": true
+          }
+        }
+      ],
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true
+    },
+    {
+      "alignment": "right",
+      "type": "prompt",
+      "filler": "<p:green,transparent>·</>",
+      "segments": [ 
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0bc",
+          "foreground": "p:mantle",
+          "background": "p:purple",
+          "template": "  {{ .Venv }} {{ .Major }}.{{ .Minor }} "
+        },
+        {
+          "type": "sysinfo",
+          "style": "powerline",
+          "powerline_symbol": "\ue0bc",
+          "foreground": "p:mantle",
+          "background": "p:green",
+          "background_templates": [
+            "{{ if lt .PhysicalAvailableMemory 8589934592 }}p:yellow{{ end }}",
+            "{{ if lt .PhysicalAvailableMemory 4294967296 }}p:red{{ end }}"
+          ],
+          "template": " \uf1c0 {{ round (divf .PhysicalAvailableMemory 1073741824) 2}}G "
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "p:teal",
+          "properties": {
+            "time_format": "15:04"
+          },
+          "template": " {{ .Format }}"
+        }
+      ]
+    },
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "foreground": "p:closer",
+          "template": "\u2570\u2574",
+          "type": "text"
+        },
+        {
+          "style": "plain",
+          "foreground": "p:closer",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}p:red{{ end }}"
+          ],
+          "template": "\uf101",
+          "type": "text"
+        },
+        {
+          "style": "plain",
+          "foreground": "p:closer",
+          "template": "\uf105 ",
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "version": 2,
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "p:closer",
+    "template": "\u2576\u2574\uf101\uf105 "
+  }
+}
