@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/functions.zsh
 
 # History options
 setopt appendhistory
