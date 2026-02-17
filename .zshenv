@@ -26,3 +26,5 @@ export LD_LIBRARY_PATH=/home/mlanger/Documents/Development/AnylineCore/prebuild/
 
 # fifty one plugins
 export FIFTYONE_PLUGINS_DIR=/home/mlanger/Documents/Development/FiftyOne/fiftyone-anyline/src/fiftyone-plugins/fiftyone_plugins/
+
+if [ -e /home/orakeldel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/orakeldel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

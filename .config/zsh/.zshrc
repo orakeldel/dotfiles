@@ -18,7 +18,10 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Virtualenv
-source /home/mlanger/.local/bin/virtualenvwrapper.sh
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
+export PATH=$PATH:/home/orakeldel/.local/bin
 
 # Completion
 source $ZDOTDIR/completion.zsh
@@ -48,4 +51,6 @@ source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Theme oh-my-posh
 # eval "$(oh-my-posh init zsh --config /home/mlanger/.config/zsh/themes/ohmyposh/my_theme.json)"
+#
+source $ZDOTDIR/plugins/auto-uv-env/share/auto-uv-env/auto-uv-env.zsh
 

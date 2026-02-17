@@ -115,7 +115,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # +----------+
 # | previews |
 # +----------+
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then; ls $realpath ; elif [[ -f $realpath ]]; then; if file "$realpath" | grep -q text$; then; head -n 80 $realpath | batcat --color=always ; fi ; fi'
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'if [[ -d $realpath ]]; then; ls $realpath ; elif [[ -f $realpath ]]; then; if file "$realpath" | grep -q text$; then; head -n 80 $realpath | bat --color=always ; fi ; fi'
 zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 	'case "$group" in
 	"modified file") git diff $word | delta ;;

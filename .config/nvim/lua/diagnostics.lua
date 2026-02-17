@@ -26,3 +26,5 @@
     command = "lua OpenDiagnosticIfNoFloat()",
     group = "lsp_diagnostics_hold",
   })
+
+  vim.keymap.set("n", "<leader>cd", ":lua OpenDiagnosticIfNoFloat()<CR>", {})
